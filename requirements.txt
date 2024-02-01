@@ -1,6 +1,8 @@
 langchain
+langchain-openai
 openai
 setuptools
 python-dotenv
 argparse
 playwright
+pyotp
