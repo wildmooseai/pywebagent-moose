@@ -196,8 +196,13 @@
         && ['pointer', 'auto', 'hand', 'text'].includes(cursor_from_point));
   }
 
+  // DO NOT EDIT: Can be overridden by specialised agents. 
+  function isMarkableElementOverride(element) { return null; }
 
   function isMarkableElement(element) {
+    const isMarkableOverride = isMarkableElementOverride(element);
+    if (isMarkableOverride != null)
+        return isMarkableOverride;     
     return (isElementInViewport(element) && isElementVisible(element) && isElementMouseAccessible(element) && isElementInteractable(element));
   }
 
@@ -267,7 +272,8 @@
         xpath: getXPathForElement(element),
         html: element.outerHTML, // Adding the HTML of the element
         element: element, // Store the actual element
-        old_aria_label: originalLabel
+        old_aria_label: originalLabel,
+        textContent: element.textContent,
     });
     counter++;
   }
