@@ -6,3 +6,5 @@ python-dotenv
 argparse
 playwright
 pyotp
+Pillow
+numpy
